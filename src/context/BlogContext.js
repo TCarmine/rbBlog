@@ -1,21 +1,27 @@
-import React, { useState } from "react"
+import React, { useReducer } from "react"
 
 const BlogContext = React.createContext()
 
-export const BlogProvider = ({children}) => {
-  const [ blogPosts, setBlogPosts] = useState([])
+const blogReducer = (state, action) => { 
+  switch(action.type) {
+    case "add_blogpost":
+      return [ ...state, {title:`Blog Post #${state.length+1}`, id:`${state.length+1}`}]
+    default:
+        return state
+  }
+}  
 
+export const BlogProvider = ({children}) => {
+  const [ blogPosts, dispatch] = useReducer(blogReducer, [])
+  
   // helper to add 1 element in the all array blogPosts as 
   // setBlogPosts replace the complete array
   const addBlogPost = () => {
-    // check how to add dinamic id
-    setBlogPosts([
-      ...blogPosts, 
-      {title:`Blog Post #${blogPosts.length+1}`, id:`${blogPosts.length+1}`} ])
+    dispatch({type:"add_blogpost"})     
   }
 
   return (
-    <BlogContext.Provider value={{data: blogPosts, addBlogPost}}>
+    <BlogContext.Provider value={{ data: blogPosts, addBlogPost }}>
       {children}
     </BlogContext.Provider>
   )  
