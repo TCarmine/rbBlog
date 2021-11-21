@@ -3,7 +3,6 @@ import { View, Text, StyleSheet } from "react-native"
 import { Context } from "../context/BlogContext"
 
 const ShowScreen = ({ navigation }) => {
-  /* console.log(navigation.getParam("id")) */
   const { state } = useContext(Context)
 
   const blogPost =  state.find((blogPost)=>blogPost.id === navigation.getParam("id"))
@@ -12,6 +11,9 @@ const ShowScreen = ({ navigation }) => {
     <View>
       <Text>
         {blogPost.title}
+      </Text>
+      <Text>
+        {blogPost.content}
       </Text>
     </View>
   )
