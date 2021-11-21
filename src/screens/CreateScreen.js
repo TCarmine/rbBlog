@@ -10,6 +10,7 @@ const CreateScreen = ({ navigation }) => {
      Create
       </Text>
     </View>  
+  )  
 }
 
 const styles = StyleSheet.create({})
