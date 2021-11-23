@@ -38,7 +38,7 @@ const addBlogPosts = dispatch => {
   }
 }
 
-const addBlogPost = dispatch => {
+const getBlogPosts = dispatch => {
   return (title, content, callback) =>{
     dispatch({type:"add_blogpost", payload:{title:title, content:content}})
     if(callback){
@@ -67,8 +67,8 @@ const editBlogPost = dispatch =>{
 
 export const { Context, Provider } = createDataContext( 
   blogReducer, 
-  { addBlogPost, deleteBlogPost, editBlogPost },
-  [{title:"Test Post", content:"Content test", id:1}] 
+  { addBlogPost, deleteBlogPost, editBlogPost, getBlogPosts },
+  [] 
 )
 
 
