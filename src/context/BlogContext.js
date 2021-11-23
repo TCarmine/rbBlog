@@ -30,7 +30,7 @@ const blogReducer = (state, action) => {
   }
 }  
 
-const addBlogPosts = dispatch => {
+const getBlogPosts = dispatch => {
   return async () => {
    const response = await jsonServer.get("blogposts")
 
@@ -38,7 +38,7 @@ const addBlogPosts = dispatch => {
   }
 }
 
-const getBlogPosts = dispatch => {
+const  addBlogPost = dispatch => {
   return (title, content, callback) =>{
     dispatch({type:"add_blogpost", payload:{title:title, content:content}})
     if(callback){
